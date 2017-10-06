@@ -1,0 +1,34 @@
+<div style="margin-bottom: 3%">
+
+</div>
+<div class="container-fluid col-md-8 col-md-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading" style="padding-top: 3%">
+      <h4 class="panel-title"><strong>{{panelHeading}}</strong></h4>
+        <button *ngIf="isModify" style="margin-top: -30px" class="btn btn-default pull-right" (click)="addModule()">add</button>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <tr *ngFor="let domain of domains; let i=index" style="text-align: center">
+          <th>{{domain.domainName}}</th>
+          <td><button *ngIf="!isModify" class="btn btn-primary" [routerLink] = "['/add',domain.id,paramId]" >Add</button></td>
+          <td><button *ngIf="isModify" class="btn btn-primary" [routerLink] = "['/modify',domain.id,paramId]" ><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+            <button *ngIf="isModify" class="btn btn-danger" (click)="deleteDomain(domain,i)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+          </td>
+
+        </tr>
+      </table>
+      <form *ngIf="isAddModule" #f="ngForm">
+      <table class="table">
+        <tr style="text-align: center">
+          <td><input placeholder="Domain Code" type="text" class="form-control" [(ngModel)]="newDomain.code" name="txtCode" #txtCode="ngModel" ngModel required></td>
+          <td><input placeholder="Domain Name" type="text" class="form-control" [(ngModel)]="newDomain.domainName" name="txtName" #txtDomain="ngModel" ngModel required></td>
+          <td><span class="button-group"><button class="btn btn-success" [disabled] = "f.invalid" (click)="createDomain()">Save</button>
+          <button class="btn btn-default" (click)="cancelAdd()">Cancel</button></span></td>
+        </tr>
+      </table>
+      </form>
+    </div>
+  </div>
+</div>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

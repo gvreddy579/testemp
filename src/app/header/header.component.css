@@ -1,0 +1,14 @@
+.navbar-default {
+  background-color: #22926e;
+  border-color: #22926e;
+}
+.navbar-brand {
+  color: white;
+}
+
+.nav {
+  -webkit-box-shadow: 0 10px 6px -6px #999;
+  -moz-box-shadow: 0 10px 6px -6px #999;
+  box-shadow: 0 10px 6px -6px #999;
+}
+

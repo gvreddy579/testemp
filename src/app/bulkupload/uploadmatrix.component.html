@@ -1,0 +1,64 @@
+
+<div class="panel panel-primary col-md-8 col-md-offset-2" style="padding-top: 2%" >
+  <div class="panel-heading">Upload Template</div>
+  <div class="panel-body">
+    <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" class="well" (change)="fileChangeListener($event)" accept=".csv" style="width: 100%; text-align: center"/>
+
+  </div>
+</div>
+<div>
+<div class="panel panel-primary" *ngIf="showTable" style="padding-top: 22%">
+  <div class="panel-heading"><strong>Total Rows: <span class="badge">{{knowedgeMatrix.length}}</span></strong></div>
+  <div style="padding-right: 9%">
+    <button class="btn btn-success pull-right" style="margin-top: -38px;" (click)="upload()">
+      <span class="glyphicon glyphicon-upload"></span> Upload
+    </button>
+  </div>
+  <div style="padding-right: 2%">
+    <button class="btn btn-warning pull-right" style="margin-top: -38px;" (click)="fileReset()">
+      <span class="glyphicon glyphicon-remove"></span> Cancel
+    </button>
+    </div>
+
+      <table class="table table-bordered table-striped table-hover"  *ngIf="showTable">
+        <tr class="success"><th>EmployeeId</th>
+          <th>Name</th>
+          <th>Manager</th>
+          <th>HOD</th>
+          <th>Team/Service</th>
+          <th>Framework/Tools</th>
+          <th>Domain</th>
+          <th>KnowledgeArea</th>
+          <th>Level</th>
+          <th>Relavant Experience</th>
+          <th>External Experience</th>
+          <th>Current Program</th>
+        </tr>
+
+        <tr *ngFor="let matrix of knowedgeMatrix">
+          <td>{{matrix.empid}}</td>
+          <td>{{matrix.name}}</td>
+          <td>{{matrix.teamManager}}</td>
+          <td>{{matrix.hod}}</td>
+          <td>{{matrix.team}}</td>
+          <td>{{matrix.framework}}</td>
+          <td>{{matrix.domain}}</td>
+          <td>{{matrix.knowledgeArea}}</td>
+          <td>{{matrix.level}}</td>
+          <td>{{matrix.relevantExp}}</td>
+          <td>{{matrix.externalExp}}</td>
+          <td>{{matrix.currentProgram}}</td>
+
+        </tr>
+
+      </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+

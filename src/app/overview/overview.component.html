@@ -1,0 +1,39 @@
+<div class="col-md-4" style="padding-top: 2%">
+  <p-chart type="pie" [data]="data"></p-chart>
+</div>
+<div class="col-md-4" style="padding-top: 2%">
+  <p-chart type="pie" [data]="data"></p-chart>
+</div>
+<div class="col-md-4" style="padding-top: 2%">
+  <p-chart type="pie" [data]="data"></p-chart>
+</div>
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none; padding-top: 20%">
+  <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+  <input #gb type="text" pInputText size="50" placeholder="Global Filter">
+</div>
+
+<p-dataTable [value]="knowlegeMatrix" [rows]="10" (onFilter)="uploadChart($event)" exportFilename="Knowledge Matrix" [paginator]="true" [globalFilter]="gb" #dt>
+  <p-header class="success"> Knowledge Matrix
+    <div class="ui-helper-clearfix">
+    <button  class="btn btn-primary" type="button" pButton icon="fa-file" iconPos="left" label="Knowledge Matrix" (click)="dt.exportCSV()" style="float:right"><span class="glyphicon glyphicon-download-alt"></span> Download</button>
+  </div>
+  </p-header>
+  <p-column field="empid" header="Employee ID" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="name" header="Name" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="teamManager" header="Team Manager" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="hod" header="HOD" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="team" header="Team/ Service" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="framework" header="Framework / Tool" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="domain" header="Domain" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="knowledgeArea" header="Knowledge Area" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="level" header="Level" [filter]="true" filterPlaceholder="equals">
+    <ng-template pTemplate="filter" let-col>
+      <p-dropdown [options]="levels" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
+    </ng-template>
+  </p-column>
+  <p-column field="relevantExp" header="Relevant Exp" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="externalExp" header="External Exp" [filter]="true" filterPlaceholder="Search"></p-column>
+  <p-column field="currentProgram" header="Current Program" [filter]="true" filterPlaceholder="Search"></p-column>
+
+</p-dataTable>
+

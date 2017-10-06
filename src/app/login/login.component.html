@@ -1,0 +1,18 @@
+<div class="well container col-md-3 col-md-offset-4" style="margin-top: 5%">
+  <b *ngIf=!isValidUsr style="color: red;">UserName or Password is incorrect</b>
+  <form #f="ngForm">
+    <h2>Login</h2>
+    <label for="usrName">UserName:</label><br>
+    <input id="usrName" name="txtUserName" #txtUser="ngModel" ngModel required style="width: 100%" class="form-control">
+    <b style="color: red;" *ngIf="txtUser.errors?.required && txtUser.dirty">UserName is required</b>
+    <br><br>
+    <label for="password">Password:</label><br>
+    <input id="password" name="txtPassword" #txtPwd="ngModel" ngModel required minlength="3" class="form-control" type="password" style="width: 100%">
+    <b style="color: red;" *ngIf="txtPwd.errors?.required && txtPwd.dirty">Password is required</b>
+    <b style="color: red;" *ngIf="txtPwd.errors?.minlength">Minimum 3 charecters are required</b><br>
+        <button class="btn btn-primary" style="float: right; margin-left: 2%" [disabled] = "f.invalid" (click)="doLogin(txtUser.value,txtPwd.value)">Login</button>
+    <div>
+    <button class="btn btn-default" style="float: right" type="reset">Reset</button>
+    </div>
+  </form>
+</div>

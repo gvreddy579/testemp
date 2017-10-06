@@ -1,0 +1,25 @@
+<div style="margin-bottom: 3%"></div>
+<div class="container col-md-8 col-md-offset-2">
+  <form>
+  <table class="table table-striped table-hover well">
+    <tr class="success">
+      <th>FrameWork/Tool</th>
+      <th>Knowledge Area</th>
+      <th>Level<span class="badge" style="background: #e2ca28" tooltipPosition="top" pTooltip="0 - No knowledge at all.&#013;1 - You have been trained, but no hands on, so you definitively need coaching.&#013; 2 - You have been trained, little hands on, so you probably still need coaching.&#013;3 - You have been trained, have hands on and can work independently&#013;4 - You have been trained, have hands on, can work independently and feels comfortable to coach other developers">i</span></th>
+      <th>Relavent Experience(In Months)</th>
+      <th>External Experience</th>
+      <th>Current Program(If Any)</th>
+    </tr>
+    <tr *ngFor="let km of knowledgeMatrix">
+      <td>{{km.framework}}</td>
+      <td>{{km.knowledgeArea}}</td>
+      <td><input type="number" [(ngModel)]="km.level" name="txtLevel" min="0" max="4"></td>
+      <td><input type="number" [(ngModel)]="km.relevantExp" name="txtExp" min="0"></td>
+      <td><input type="number" [(ngModel)]="km.externalExp" name="txtExExp" min="0"></td>
+      <td><input type="text" [(ngModel)]="km.currentProgram" name="txtCurrProg"></td>
+    </tr>
+  </table>
+    <button class="btn btn-primary" style="float: right" (click) = "goBack()">Back</button>
+    <button type="submit" class="btn btn-primary" style="float: right" (click) = "doSave(knowledgeMatrix)">Save</button>
+  </form>
+</div>

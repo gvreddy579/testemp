@@ -1,0 +1,29 @@
+<div class="col-md-8 col-md-offset-2">
+<div class="well">
+<form #f="ngForm">
+
+  <label for="framework">FrameWork:</label><br>
+  <input id="framework" class="form-control" [(ngModel)]="frmSkill.framework" style="width: 30%" name="txtFramework" ngModel required><br>
+  <label for="knwArea">KnowledgeArea:</label><br>
+  <input id="knwArea" class="form-control" [(ngModel)]="frmSkill.skillName" style="width: 30%" name="txtKnwArea" ngModel required><br>
+  <button class="btn btn-primary" (click)="saveSkill()" [disabled] = "f.invalid">Save</button>
+
+</form>
+  </div>
+
+<table class="table table table-bordered table-striped table-hover">
+  <tr>
+    <th>Framework/Tool</th>
+    <th>KnowledgeArea</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let skill of domainSkills; let i = index">
+    <td>{{skill.framework}}</td>
+    <td>{{skill.skillName}}</td>
+    <td><a (click)="deleteSkill(skill.id,i)" class="btn btn-xs btn-danger">Delete</a>
+    <a (click)="editSkill(skill,i)" class="btn btn-xs btn-warning">Edit</a></td>
+  </tr>
+</table>
+  <button class="btn btn-primary" style="float: right" (click)="goBack()" >Back</button>
+</div>
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

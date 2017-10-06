@@ -1,0 +1,17 @@
+<nav class="nav navbar-default fixed-top">
+  <div class="navbar-header">
+    <a href="#" class="navbar-brand">{{appName}}</a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li *ngIf="isUserLoggedIn()" routerLinkActive="active"><a routerLink = "/home" style="color:white">Home</a></li>
+    <li *ngIf="isUserLoggedIn()" routerLinkActive="active"><a [routerLink] =  "['/create',createScreen]" style="color: white;">Create Matrix</a></li>
+    <li *ngIf="isUserLoggedIn()" routerLinkActive="active"><a [routerLink] = "['/manage',modifyScreen]"  style="color: white;">Manage Matrix</a></li>
+    <li *ngIf="isUserLoggedIn()" routerLinkActive="active"><a routerLink ="/upload" style="color: white;">Upload</a></li>
+    <li *ngIf="isUserLoggedIn()" routerLinkActive="active"><a routerLink ="/overview" style="color: white;">Overview</a></li>
+  </ul>
+  <ul class="nav navbar-nav" style="float:right">
+    <li *ngIf="!isUserLoggedIn()"><a routerLink = "/login" style="color: white;">Login</a></li>
+    <li *ngIf="isUserLoggedIn()"><a routerLink = "/logout" style="color: white;" data-toggle="tooltip" data-placement="left" title="LogOut"><span class="glyphicon glyphicon-log-out btn-md"></span></a></li>
+  </ul>
+
+</nav>
